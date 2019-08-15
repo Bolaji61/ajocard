@@ -2,6 +2,7 @@ import random
 import nexmo
 from flask import Flask, request, session, jsonify, url_for
 from flask_sqlalchemy import SQLAlchemy
+
 app = Flask (__name__)
 db = SQLAlchemy(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = DB_URL = 'mysql+pymysql://root:omobolaji@localhost/ajocard'
@@ -83,7 +84,7 @@ def transact():
         new_transaction = transaction(destination_id=destination_id, successful="no", amount=amount, otp=otp)
         db.session.add(new_transaction)
         db.session.commit()
-        client = nexmo.Client(key='923e653d', secret='eX158CJctKtrgIWe')
+        client = nexmo.Client(key='d9d85472', secret='7zdhGKVOQZ8LI5bl')
         client.send_message({
             'from': 'Nexmo',
             'to': '2348149332585',
@@ -108,6 +109,3 @@ def complete_trasaction(the_otp):
 
 if __name__=='__main__':
     app.run(debug=True)
-
-
-    # https://documenter.getpostman.com/view/4964064/SVYxnaPy?version=latest
